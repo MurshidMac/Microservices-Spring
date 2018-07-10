@@ -32,12 +32,15 @@ public class Main {
 			return;
 		}
 
+		// adding my own server name here
 		if (serverName.equals("registration") || serverName.equals("reg")) {
 			RegistrationServer.main(args);
 		} else if (serverName.equals("accounts")) {
 			AccountsServer.main(args);
 		} else if (serverName.equals("web")) {
 			WebServer.main(args);
+		} else if(serverName.equals("hello")) {
+
 		} else {
 			System.out.println("Unknown server type: " + serverName);
 			usage();

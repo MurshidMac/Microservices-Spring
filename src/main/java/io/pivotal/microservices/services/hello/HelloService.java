@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.PostConstruct;
+import java.util.List;
 import java.util.logging.Logger;
 
 @Service
@@ -20,6 +21,7 @@ public class HelloService {
     protected String serviceURL;
 
     protected Logger logger = Logger.getLogger(HelloService.class.getName());
+
     public HelloService(String serviceUrl){
         this.serviceURL = serviceUrl.startsWith("http") ? serviceUrl
                 : "http://" + serviceUrl;
@@ -30,11 +32,14 @@ public class HelloService {
         logger.warning("The template request factory id " + restTemplate.getRequestFactory().getClass());
     }
 
-    public Hello findByName(String name){
+    public Hello getHelloString(String name){
         logger.info("findbyName invoked for "+ name);
-        return restTemplate.getForObject(serviceURL + "/accounts/{number}",
-                Account.class, accountNumber);
+        return restTemplate.getForObject(serviceURL + "/hello",
+                Hello.class, name);
     }
 
+    public List<Hello> getHelloList(){
+
+    }
 
 }
