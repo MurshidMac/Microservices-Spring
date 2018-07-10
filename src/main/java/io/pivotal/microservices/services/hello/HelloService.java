@@ -32,8 +32,9 @@ public class HelloService {
 
     public Hello findByName(String name){
         logger.info("findbyName invoked for "+ name);
-        return restTemplate.getForObject(serviceURL + "/accounts/{number}",
-                Account.class, accountNumber);
+        // this return the same as of the url
+        return restTemplate.getForObject(serviceURL + "/hello/{name}",
+                Hello.class,name);
     }
 
 
